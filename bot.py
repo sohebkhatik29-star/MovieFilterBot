@@ -1,4 +1,4 @@
-from pyrogram import Client
+from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN
 
 app = Client(
@@ -8,8 +8,12 @@ app = Client(
     bot_token=BOT_TOKEN
 )
 
-@app.on_message()
-async def test(client, message):
+@app.on_message(filters.command("start"))
+async def start(client, message):
+    await message.reply_text("Bot is running ✅")
+
+@app.on_message(filters.text)
+async def echo(client, message):
     print(message.text)
 
 app.run()
