@@ -1,6 +1,7 @@
 services:
-  - type: worker
-    name: moviefilterbot
+  - type: web
+    name: MovieFilterBot
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python bot.py
+    envVars: []
